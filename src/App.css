@@ -1,0 +1,409 @@
+/* ---------- Frase fixa no fundo ---------- */
+.bg-phrase {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  display: grid;
+  place-content: center;
+  padding: 0 16px;
+  color: var(--red);
+  filter: blur(18px); /* o React ajusta conforme a rolagem */
+  will-change: filter;
+  font-family: var(--font-title);
+  font-size: clamp(2rem, 6.4vw, 6.2rem);
+  line-height: 1.05;
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* todo o conteúdo rola por cima da frase */
+.page {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Marca ---------- */
+.brand,
+.hero-logo {
+  font-family: var(--font-title);
+  color: var(--white);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-shadow: 3px 3px 0 var(--red);
+}
+
+.brand {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+/* ---------- Header ---------- */
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px clamp(20px, 5vw, 64px);
+  background: var(--black);
+  border-bottom: var(--border);
+  /* escondido na primeira tela; aparece ao rolar */
+  transform: translateY(-100%);
+  visibility: hidden;
+  transition: transform 0.3s, visibility 0s 0.3s;
+}
+
+.header.is-visible {
+  transform: none;
+  visibility: visible;
+  transition: transform 0.3s;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav a:not(.btn):hover {
+  color: var(--red);
+}
+
+/* ---------- Botões (vermelho) ---------- */
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  background: var(--red);
+  color: var(--black);
+  border: 3px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 4px 4px 0 var(--line);
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--line);
+}
+
+.btn-small {
+  padding: 6px 16px;
+  font-size: 1rem;
+}
+
+/* ---------- Hero / Line-up ---------- */
+.hero {
+  display: grid;
+  justify-items: center;
+  gap: 24px;
+  padding: clamp(32px, 5vw, 64px) clamp(16px, 5vw, 64px) clamp(40px, 6vw, 72px);
+  text-align: center;
+}
+
+.hero-kicker {
+  font-family: var(--font-title);
+  font-size: clamp(1.6rem, 5vw, 3.2rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-shadow: 3px 3px 0 var(--red);
+}
+
+.hero-logo {
+  font-size: clamp(3.2rem, 14vw, 10rem);
+  font-weight: 400;
+  line-height: 1;
+  text-shadow: 5px 5px 0 var(--red);
+}
+
+.lineup {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: start;
+  gap: clamp(8px, 2vw, 24px);
+  width: 100%;
+  max-width: 1000px;
+  margin-top: 16px;
+}
+
+.artist {
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+}
+
+.artist:nth-child(even) {
+  margin-top: 28px;
+}
+
+.artist-photo {
+  width: 100%;
+  aspect-ratio: 160 / 474;
+  overflow: hidden;
+  background: var(--black);
+  border: var(--border);
+  box-shadow: 6px 6px 0 var(--red);
+}
+
+.artist-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1);
+}
+
+.artist-name {
+  padding: 2px 10px;
+  background: var(--white);
+  color: var(--black);
+  box-shadow: 3px 3px 0 var(--red);
+  font-size: clamp(0.8rem, 1.8vw, 1.2rem);
+  line-height: 1.2;
+  text-transform: uppercase;
+  transform: rotate(-2deg);
+}
+
+.artist:nth-child(even) .artist-name {
+  transform: rotate(2deg);
+}
+
+.hero-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.hero-info li {
+  padding: 4px 18px;
+  background: var(--black);
+  border: 3px solid var(--line);
+  box-shadow: 4px 4px 0 var(--red);
+  font-size: clamp(1rem, 2.6vw, 1.5rem);
+  text-transform: uppercase;
+}
+
+/* ---------- Seções ---------- */
+.section {
+  padding: clamp(40px, 6vw, 80px) clamp(20px, 5vw, 64px);
+  border-top: var(--border);
+}
+
+.section h2 {
+  margin-bottom: 28px;
+  font-family: var(--font-title);
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-shadow: 3px 3px 0 var(--red);
+}
+
+.panel {
+  max-width: 60ch;
+  padding: 24px;
+  background: var(--black);
+  border: var(--border);
+  box-shadow: 8px 8px 0 var(--red);
+  font-size: 1.2rem;
+}
+
+/* ---------- Programação ---------- */
+.schedule {
+  display: grid;
+  gap: 16px;
+  max-width: 720px;
+}
+
+.slot {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 20px;
+  background: var(--black);
+  border: var(--border);
+  box-shadow: 4px 4px 0 var(--red);
+  font-size: 1.15rem;
+}
+
+.slot-time {
+  min-width: 72px;
+  padding: 4px 10px;
+  background: var(--red);
+  border: 3px solid var(--line);
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+/* ---------- Ingressos ---------- */
+.tickets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 28px;
+}
+
+.ticket {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  padding: 24px;
+  background: var(--black);
+  border: var(--border);
+  box-shadow: 8px 8px 0 var(--red);
+}
+
+.ticket h3 {
+  font-size: 1.9rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.ticket-price {
+  font-size: 2.8rem;
+  line-height: 1;
+}
+
+.ticket .btn {
+  margin-top: 8px;
+  justify-self: start;
+}
+
+/* ---------- Rodapé ---------- */
+.footer {
+  display: grid;
+  gap: 8px;
+  padding: 40px clamp(20px, 5vw, 64px);
+  background: var(--black);
+  border-top: var(--border);
+}
+
+.copyright {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 2px solid var(--line);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 800px) {
+  .lineup {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .artist:nth-child(even) {
+    margin-top: 0;
+  }
+
+  .nav {
+    gap: 14px;
+    font-size: 0.95rem;
+  }
+
+  .nav a:not(.btn):nth-child(-n + 2) {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .lineup {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---------- Efeito de queimar a foto ---------- */
+.artist-photo {
+  position: relative;
+  cursor: pointer;
+}
+
+.artist-photo canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.artist-photo.is-burning canvas {
+  visibility: visible;
+}
+
+.artist-photo.is-burning img {
+  visibility: hidden;
+}
+
+/* fallback sem WebGL: fade simples */
+.artist-photo img {
+  transition: opacity 0.6s;
+}
+
+.artist-photo.is-burned img {
+  opacity: 0;
+}
+
+/* ---------- Primeira tela: Perifar + Show off ---------- */
+.intro {
+  position: relative;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 4px;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 24px;
+  text-align: center;
+}
+
+.scroll-down {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin-left: -28px;
+  background: var(--black);
+  border: 3px solid var(--line);
+  border-radius: 50%;
+  box-shadow: 4px 4px 0 var(--red);
+  animation: bounce 1.6s ease-in-out infinite;
+}
+
+.scroll-down svg {
+  width: 26px;
+  height: 26px;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-down {
+    animation: none;
+  }
+}
+
+/* o menu fixo não cobre o título das seções ao clicar nos links */
+.hero,
+.section {
+  scroll-margin-top: 64px;
+}

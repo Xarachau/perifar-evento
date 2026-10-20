@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Sedgwick+Ave+Display&display=swap');
+
+:root {
+  --black: #0a0a0a;
+  --white: #ffffff;
+  --red: #ff2400;
+  /* cor das linhas, bordas e sombras duras (cinza claro, em vez de branco puro) */
+  --line: #bfbfbf;
+  /* Sedgwick: títulos e logo (tag de grafite). Permanent Marker: todo o resto */
+  --font-title: 'Sedgwick Ave Display', 'Permanent Marker', cursive;
+  --font: 'Permanent Marker', 'Sedgwick Ave Display', cursive;
+  --border: 4px solid var(--line);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 4px solid var(--red);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition: none !important;
+  }
+}
